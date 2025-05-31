@@ -3,7 +3,7 @@
   <div class="row mt-3">
     <div class="col-8 offset-2">
       <h3>Create a new listing</h3>
-      <form method="POST" action="/listings">
+      <form class = "needs-validation" method="POST" action="/listings" novalidate>
         <div class="mb-3">
           <label for="title" class="form-label">Enter title</label>
           <input
@@ -11,8 +11,12 @@
             name="listing[title]"
             placeholder="Add a catchy title"
             class="form-control"
+            required
           />
+          <div class="valid-feedback">Title looks good</div>
+          <div class="invalid-feedback">Title should be valid</div>
         </div>
+        
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
           <textarea
@@ -20,7 +24,9 @@
             cols="40"
             name="listing[description]"
             class="form-control"
+            required
           ></textarea>
+          <div class="invalid-feedback">Description should be valid</div>
         </div>
         <div class="mb-3">
           <label for="image" class="form-label">Image</label>
@@ -39,7 +45,9 @@
               name="listing[price]"
               placeholder="1200"
               class="form-control"
+              required
             />
+            <div class="invalid-feedback">Enter correct price</div>
           </div>
           <div class="mb-3 col-md-8">
             <label for="country" class="form-label">Country</label>
@@ -48,7 +56,9 @@
               name="listing[country]"
               placeholder="India"
               class="form-control"
+              required
             />
+            <div class="invalid-feedback">Please enter the country name</div>
           </div>
         </div>
         <div class="mb-3">
@@ -58,7 +68,9 @@
             name="listing[location]"
             placeholder="New Delhi, India"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">Please enter the location</div>
         </div>
         <button class="btn btn-dark mb-3 add-btn">Add</button>
       </form>
