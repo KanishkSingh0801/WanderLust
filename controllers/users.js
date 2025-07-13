@@ -16,12 +16,13 @@ module.exports.signup = async (req, res) => {
     });
   } catch (err) {
     req.flash("error", err.message);
-    res.redirect("/signup");
+    res.redirect("/signup", {error});
   }
 };
 
 module.exports.renderSignUpForm = (req, res) => {
-  res.render("users/signup.ejs");
+  const error = req.flash("error");
+  res.render("users/signup.ejs", {error});
 };
 
 module.exports.renderLoginForm = (req, res) => {

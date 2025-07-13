@@ -68,12 +68,6 @@ const sessionOptions = {
   },
 };
 
-
-
-// app.get("/", (req, res) => {
-//   res.send("Hi, i am root");
-// });
-
 app.use(session(sessionOptions));
 app.use(flash()); //this should come before the routes such as listings and reviews
 
@@ -92,6 +86,10 @@ app.use((req, res, next) => {
   res.locals.search = req.query.search || "";
   res.locals.category = req.query.category || "";
   next();
+});
+
+app.get("/", (req, res) => {
+  res.render("home.ejs");
 });
 
 //DEMONSTRATION OF DUMMY ENTRY
