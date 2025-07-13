@@ -1,8 +1,25 @@
 const Listing = require("../models/listing");
 
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index.ejs", { allListings });
+  const { search, category } = req.query;
+  const query = {};
+
+  if (search) {
+    const regex = new RegExp(search, "i");
+    query.$or = [
+      { title: regex },
+      { description: regex },
+      { location: regex },
+      { category: regex },
+    ];
+  }
+
+  if (category && category !== "") {
+    query.category = category;
+  }
+
+  const allListings = await Listing.find(query);
+  res.render("listings/index.ejs", { allListings, search, category });
 };
 
 module.exports.renderNewForm = (req, res) => {
@@ -54,7 +71,9 @@ module.exports.renderEditListing = async (req, res) => {
 
 module.exports.renderUpdateListing = async (req, res) => {
   let { id } = req.params;
-  let listingData = await Listing.findByIdAndUpdate(id, {...req.body.listing});
+  let listingData = await Listing.findByIdAndUpdate(id, {
+    ...req.body.listing,
+  });
 
   if (typeof req.file !== "undefined") {
     let url = req.file.path;

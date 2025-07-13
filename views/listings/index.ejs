@@ -21,47 +21,94 @@
     opacity: 1;
     cursor: pointer;
   }
+
+  .filter.active-filter {
+    opacity: 1;
+    border-bottom: 3px solid #000;
+  }
 </style>
 <div id="filters">
-  <div class="filter">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Trending</p>
-  </div>
-  <div class="filter">
+  <div
+    class="filter <%= category === 'room' ? 'active-filter' : '' %>"
+    data-category="room"
+  >
     <div><i class="fa-solid fa-bed"></i></div>
     <p>Rooms</p>
   </div>
-  <div class="filter">
+  <div
+    class="filter <%= category === 'city' ? 'active-filter' : '' %>"
+    data-category="city"
+  >
     <div><i class="fa-solid fa-landmark"></i></div>
     <p>Iconic cities</p>
   </div>
-  <div class="filter">
+  <div
+    class="filter <%= category === 'mountain' ? 'active-filter' : '' %>"
+    data-category="mountain"
+  >
     <div><i class="fa-solid fa-mountain-sun"></i></div>
     <p>Mountains</p>
   </div>
-  <div class="filter">
+  <div
+    class="filter <%= category === 'castle' ? 'active-filter' : '' %>"
+    data-category="castle"
+  >
     <div><i class="fa-solid fa-chess-rook"></i></div>
     <p>Castles</p>
   </div>
-  <div class="filter">
+  <div
+    class="filter <%= category === 'pool' ? 'active-filter' : '' %>"
+    data-category="pool"
+  >
     <div><i class="fa-solid fa-person-swimming"></i></div>
     <p>Amazing pools</p>
   </div>
-  <div class="filter">
+  <div
+    class="filter <%= category === 'camping' ? 'active-filter' : '' %>"
+    data-category="camping"
+  >
     <div><i class="fa-solid fa-tents"></i></div>
     <p>Camping</p>
   </div>
-  <div class="filter">
+  <div
+    class="filter <%= category === 'beach' ? 'active-filter' : '' %>"
+    data-category="beach"
+  >
     <div><i class="fa-solid fa-umbrella-beach"></i></div>
     <p>Beach</p>
   </div>
-  <div class="filter">
+  <div
+    class="filter <%= category === 'snow' ? 'active-filter' : '' %>"
+    data-category="snow"
+  >
     <div><i class="fa-solid fa-tree"></i></div>
     <p>Snow</p>
   </div>
+  <% if (category) { %>
+  <div class="filter">
+    <a href="/listings" style="text-decoration: none; color: inherit">
+      <div><i class="fa-solid fa-xmark"></i></div>
+      <p>Clear</p>
+    </a>
+  </div>
+  <% } %>
 </div>
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-  <% for(let listing of allListings) { %>
+
+<div
+  id="listing-container"
+  class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3"
+>
+  <% if (allListings.length === 0) { %>
+  <div
+    class="d-flex justify-content-center align-items-center w-100 mt-5"
+    style="height: 300px"
+  >
+    <div class="text-center">
+      <h4>No listings found.</h4>
+      <p>Try adjusting your search or category filter.</p>
+    </div>
+  </div>
+  <% } else { %> <% for(let listing of allListings) { %>
   <a href="/listings/<%= listing._id %>" class="listing-link">
     <div class="card col listing-card">
       <img
@@ -79,5 +126,5 @@
       </div>
     </div>
   </a>
-  <% } %>
+  <% } %> <% } %>
 </div>

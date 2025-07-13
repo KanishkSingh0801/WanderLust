@@ -6,10 +6,10 @@
   </div>
   <div class="card listing-card col-8 offset-2 show-card">
     <img
-      src="<%= listing.image.url%>"
-      class="card-img-top show-img"
-      alt="listing_image"
-    />
+  src="<%= listing.image.url %>"
+  alt="listing_image"
+  style="width: 100%; max-height: 500px; object-fit: contain; border-radius: 1rem;"
+/>
     <div class="card-body">
       <p class="card-text mt-3">
         <b>Owned by: - <i><%= listing.owner.username %></i><br /></b>
@@ -17,6 +17,7 @@
         <b>Price : </b>&#8377;<%= listing.price.toLocaleString("en-IN") %><br />
         <b>Location : </b><%= listing.location %> <br />
         <b>Country : </b><%= listing.country %> <br />
+        <b>Category : </b><%= listing.category %> <br />
       </p>
     </div>
   </div>
