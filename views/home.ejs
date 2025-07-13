@@ -1,0 +1,61 @@
+<% layout('/layouts/boilerplate') -%>
+
+<style>
+  .hero {
+    background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e"); /* change to your own later */
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45); /* dark overlay */
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+  }
+
+  .hero p {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+</style>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1>Find Your Dream Stay</h1>
+    <p>From beaches to mountains to magical cities, we've got you covered.</p>
+    <a href="/listings" class="btn btn-lg btn-light">Explore Listings</a>
+  </div>
+</div>
+
+<div class="container text-center mt-5 mb-5">
+  <% if (!currUser) { %>
+    <div class="mt-4">
+      <a href="/signup" class="btn btn-outline-primary me-2">Sign Up</a>
+      <a href="/login" class="btn btn-outline-success">Login</a>
+    </div>
+  <% } else { %>
+    <p class="mt-4">Logged in as <b><%= currUser.username %></b></p>
+  <% } %>
+</div>
