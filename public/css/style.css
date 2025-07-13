@@ -33,12 +33,14 @@ body {
 .f-info {
     text-align: center;
     display: flex;
-    height: 8rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
     background-color: #ebebeb;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    align-items: space-evenly;
 }
+
 
 .f-info-links, .f-info-socials, .f-info-brand{
     width: 100%;
