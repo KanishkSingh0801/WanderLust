@@ -12,6 +12,7 @@ const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 
 const listingController = require("../controllers/listings.js");
 
+router.get("/search", wrapAsync(listingController.liveSearch));
 
 router
   .route("/") //router.route is used to combine similar routes, difference request ke type ki vajah se pata chalta he GET or POST

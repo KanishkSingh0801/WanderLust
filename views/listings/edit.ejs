@@ -73,8 +73,26 @@
             class="form-control"
             required
           />
-          <div class="invalid-feedback">LOcation should be valid</div>
+          <div class="invalid-feedback">Location should be valid</div>
         </div>
+        <div class="mb-3">
+        <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select name="listing[category]" class="form-select" required>
+          <option disabled value="">Choose a category</option>
+          <option value="beach" <%= listing.category === "beach" ? "selected" : "" %>>Beach</option>
+          <option value="mountain" <%= listing.category === "mountain" ? "selected" : "" %>>Mountain</option>
+          <option value="village" <%= listing.category === "village" ? "selected" : "" %>>Village</option>
+          <option value="city" <%= listing.category === "city" ? "selected" : "" %>>City</option>
+          <option value="desert" <%= listing.category === "desert" ? "selected" : "" %>>Desert</option>
+          <option value="snow" <%= listing.category === "snow" ? "selected" : "" %>>Snow</option>
+          <option value="camping" <%= listing.category === "camping" ? "selected" : "" %>>Camping</option>
+          <option value="countryside" <%= listing.category === "countryside" ? "selected" : "" %>>Countryside</option>
+          <option value="lake" <%= listing.category === "lake" ? "selected" : "" %>>Lake</option>
+          <option value="iconic" <%= listing.category === "iconic" ? "selected" : "" %>>Iconic Cities</option>
+        </select>
+        <div class="invalid-feedback">Please select a category</div>
+      </div>
         <button class="btn btn-dark mb-3 mt-3 edit-btn">Edit</button>
       </form>
     </div>

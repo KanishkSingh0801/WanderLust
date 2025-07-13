@@ -78,6 +78,21 @@
           />
           <div class="invalid-feedback">Please enter the location</div>
         </div>
+        <div class="mb-3">
+          <label for="category" class="form-label">Select Category</label>
+          <select name="listing[category]" class="form-select" required>
+            <option value="">-- Select --</option>
+            <option value="room">Room</option>
+            <option value="city">City</option>
+            <option value="mountain">Mountain</option>
+            <option value="castle">Castle</option>
+            <option value="pool">Pool</option>
+            <option value="camping">Camping</option>
+            <option value="beach">Beach</option>
+            <option value="snow">Snow</option>
+          </select>
+          <div class="invalid-feedback">Please select a category</div>
+        </div>
         <button class="btn btn-dark mb-3 add-btn">Add</button>
       </form>
     </div>
