@@ -20,6 +20,24 @@
     padding: 4px 2px;
     margin-right: 0.5rem;
   }
+
+  .nav-link {
+    color: #333 !important;
+    font-weight: 500;
+    margin-left: 1rem;
+    transition: color 0.2s ease-in-out;
+  }
+
+  .nav-link:hover {
+    color: #FF385C !important;
+    text-decoration: none;
+  }
+
+  .navbar-nav .nav-link.active,
+  .navbar-nav .nav-link:focus {
+    color: #FF385C !important;
+  }
+  
 </style>
 
 <nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
@@ -65,7 +83,7 @@
 
       <!-- Right-aligned Auth + Host links -->
       <div class="navbar-nav ms-auto mt-2 mt-lg-0">
-        <a class="nav-link" href="/listings/new">Airbnb your home</a>
+        <a class="btn btn-outline-danger rounded-pill px-3 me-2" href="/listings/new">Airbnb your home</a>
         <% if (!currUser) { %>
           <a class="nav-link" href="/signup"><b>Sign up</b></a>
           <a class="nav-link" href="/login"><b>Login</b></a>
